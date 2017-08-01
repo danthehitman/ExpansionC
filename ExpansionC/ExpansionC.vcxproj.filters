@@ -18,5 +18,8 @@
     <ClCompile Include="win32_expansionc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="win32_handmade.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
