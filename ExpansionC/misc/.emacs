@@ -330,6 +330,9 @@
   (add-to-list 'compilation-error-regexp-alist-alist '(casey-devenv
    "*\\([0-9]+>\\)?\\(\\(?:[a-zA-Z]:\\)?[^:(\t\n]+\\)(\\([0-9]+\\)) : \\(?:see declaration\\|\\(?:warnin\\(g\\)\\|[a-z ]+\\) C[0-9]+:\\)"
     2 3 nil (4)))
+
+  ; Turn on line numbers
+  ;(linum-mode)
 )
 
 (defun casey-replace-string (FromString ToString)

@@ -79,14 +79,14 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <NMakeBuildCommandLine>cl -MT -nologo -Gm- -GR- -EHa- -Od -Oi -WX -W4 -wd4201 -wd4100 -wd4189 -DHANDMADE_INTERNAL=1 -DHANDMADE_SLOW=1 -DHANDMADE_WIN32=1 -FC -Z7 -Fmwin32_handmade.map $(SolutionDir)code\win32_handmade.cpp /Wv:18 /link -opt:ref user32.lib gdi32.lib winmm.lib</NMakeBuildCommandLine>
+    <NMakeBuildCommandLine>cl -MTd -nologo -Gm- -GR- -EHa- -Od -Oi  -W4 -wd4201 -wd4100 -wd4189 -wd4505 -DHANDMADE_INTERNAL=1 -DHANDMADE_SLOW=1 -DHANDMADE_WIN32=1 -FC -Z7 $(SolutionDir)\code\handmade.cpp -Fmhandmade.map -LD /link -incremental:no -opt:ref -PDB:handmade_%random%.pdb -EXPORT:GameGetSoundSamples -EXPORT:GameUpdateAndRender cl -MTd -nologo -Gm- -GR- -EHa- -Od -Oi  -W4 -wd4201 -wd4100 -wd4189 -wd4505 -DHANDMADE_INTERNAL=1 -DHANDMADE_SLOW=1 -DHANDMADE_WIN32=1 -FC -Z7 $(SolutionDir)\code\win32_handmade.cpp -Fmwin32_handmade.map /link -incremental:no -opt:ref user32.lib gdi32.lib winmm.lib</NMakeBuildCommandLine>
     <AdditionalOptions>-DHANDMADE_INTERNAL=1 -DHANDMADE_SLOW=1 -DHANDMADE_WIN32=1</AdditionalOptions>
     <NMakeForcedIncludes>user32.lib gdi32.lib winmm.lib</NMakeForcedIncludes>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <AdditionalOptions>-DHANDMADE_INTERNAL=1 -DHANDMADE_SLOW=1 -DHANDMADE_WIN32=1</AdditionalOptions>
     <NMakeForcedIncludes>user32.lib gdi32.lib winmm.lib</NMakeForcedIncludes>
-    <NMakeBuildCommandLine>cl -MT -nologo -Gm- -GR- -EHa- -Od -Oi -WX -W4 -wd4201 -wd4100 -wd4189 -DHANDMADE_INTERNAL=1 -DHANDMADE_SLOW=1 -DHANDMADE_WIN32=1 -FC -Z7 -Fmwin32_handmade.map $(SolutionDir)code\win32_handmade.cpp /Wv:18 /link -opt:ref user32.lib gdi32.lib winmm.lib</NMakeBuildCommandLine>
+    <NMakeBuildCommandLine>$(SolutionDir)\code\build</NMakeBuildCommandLine>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
