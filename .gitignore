@@ -5,4 +5,11 @@ ExpansionC/x64/Debug/
 ExpansionC/test.out
 ExpansionC/win32_handmade.map
 ExpansionC/code/win32_handmade.map
+<<<<<<< HEAD
 build/
+=======
+handmadehero/build/
+handmadehero/.vs/ProjectSettings.json
+handmadehero/.vs/
+handmadehero/.vscode/
+>>>>>>> Messing with the structure again to try and get a reasonable way to work with debugging and simple updates to the build.bat from Casey.
