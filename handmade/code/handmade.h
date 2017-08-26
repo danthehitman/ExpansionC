@@ -54,7 +54,7 @@ SafeTruncateUInt64(uint64 Value)
 inline game_controller_input *GetController(game_input *Input, int unsigned ControllerIndex)
 {
     Assert(ControllerIndex < ArrayCount(Input->Controllers));
-    
+
     game_controller_input *Result = &Input->Controllers[ControllerIndex];
     return(Result);
 }
