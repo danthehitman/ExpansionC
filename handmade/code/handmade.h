@@ -63,6 +63,7 @@ inline game_controller_input *GetController(game_input *Input, int unsigned Cont
 //
 //
 
+// TODO(casey): This can become "world position" or something similar
 struct canonical_position
 {
     /* TODO(casey):
@@ -76,31 +77,21 @@ struct canonical_position
 
        (NOTE we can eliminate the need for floor!)
     */
+#if 1
     int32 TileMapX;
     int32 TileMapY;
 
     int32 TileX;
     int32 TileY;
+#else
+    uint32 _TileX;
+    uint32 _TileY;
+#endif
 
-    /* TODO(casey):
-
-       Convert these to math-friendly, resolution independent representation of
-       world units relative to a tile.
-       
-    */
+    // TODO(casey): Y should go up!
+    // TODO(casey): Should these be from the center of a tile?
     real32 TileRelX;
     real32 TileRelY;
-};
-
-// TODO(casey): Is this ever necessary?
-struct raw_position
-{
-    int32 TileMapX;
-    int32 TileMapY;
-
-    // NOTE(casey): Tile-map relative X and Y
-    real32 X;
-    real32 Y;
 };
 
 struct tile_map
@@ -112,6 +103,7 @@ struct world
 {
     real32 TileSideInMeters;
     int32 TileSideInPixels;
+    real32 MetersToPixels;
     
     int32 CountX;
     int32 CountY;
@@ -128,12 +120,7 @@ struct world
 
 struct game_state
 {
-// TODO(casey): Player state should be canonical position now?
-    int32 PlayerTileMapX;
-    int32 PlayerTileMapY;
-    
-    real32 PlayerX;
-    real32 PlayerY;
+    canonical_position PlayerP;
 };
 
 #define HANDMADE_H
