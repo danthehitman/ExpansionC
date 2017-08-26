@@ -7,36 +7,8 @@
    $Notice: (C) Copyright 2014 by Molly Rocket, Inc. All Rights Reserved. $
    ======================================================================== */
 
-<<<<<<< HEAD:ExpansionC/code/handmade.h
-/*
-  NOTE(casey):
-
-  HANDMADE_INTERNAL:
-    0 - Build for public release
-    1 - Build for developer only
-
-  HANDMADE_SLOW:
-    0 - Not slow code allowed!
-    1 - Slow code welcome.
-*/
-
-#include "handmade_platform.h"
-
-#define internal static 
-#define local_persist static 
-#define global_variable static
-
-#define Pi32 3.14159265359f
-
-#if HANDMADE_SLOW
-// TODO(casey): Complete assertion macro - don't worry everyone!
-#define Assert(Expression) if(!(Expression)) {*(int *)0 = 0;}
-#else
-#define Assert(Expression)
-=======
 #ifdef __cplusplus
 extern "C" {
->>>>>>> Messing with the structure again to try and get a reasonable way to work with debugging and simple updates to the build.bat from Casey.:handmadehero/code/handmade_platform.h
 #endif
     
 #include <stdint.h>
@@ -60,15 +32,6 @@ typedef struct thread_context
     int Placeholder;
 } thread_context;
 
-<<<<<<< HEAD:ExpansionC/code/handmade.h
-inline game_controller_input *GetController(game_input *Input, int unsigned ControllerIndex)
-{
-    Assert(ControllerIndex < ArrayCount(Input->Controllers));
-    
-    game_controller_input *Result = &Input->Controllers[ControllerIndex];
-    return(Result);
-}
-=======
 /*
   NOTE(casey): Services that the platform layer provides to the game
 */
@@ -99,70 +62,9 @@ typedef DEBUG_PLATFORM_WRITE_ENTIRE_FILE(debug_platform_write_entire_file);
   NOTE(casey): Services that the game provides to the platform layer.
   (this may expand in the future - sound on separate thread, etc.)
 */
->>>>>>> Messing with the structure again to try and get a reasonable way to work with debugging and simple updates to the build.bat from Casey.:handmadehero/code/handmade_platform.h
 
-//
-//
-//
+// FOUR THINGS - timing, controller/keyboard input, bitmap buffer to use, sound buffer to use
 
-<<<<<<< HEAD:ExpansionC/code/handmade.h
-struct canonical_position
-{
-    int32 TileMapX;
-    int32 TileMapY;
-
-    int32 TileX;
-    int32 TileY;
-
-    // NOTE(casey): This is tile-relative X and Y
-    // TODO(casey): These are still in pixels... :/
-    real32 TileRelX;
-    real32 TileRelY;
-};
-
-// TODO(casey): Is this ever necessary?
-struct raw_position
-{
-    int32 TileMapX;
-    int32 TileMapY;
-
-    // NOTE(casey): Tile-map relative X and Y
-    real32 X;
-    real32 Y;
-};
-
-struct tile_map
-{
-    uint32 *Tiles;
-};
-
-struct world
-{
-    int32 CountX;
-    int32 CountY;
-    
-    real32 UpperLeftX;
-    real32 UpperLeftY;
-    real32 TileWidth;
-    real32 TileHeight;
-
-    // TODO(casey): Beginner's sparseness
-    int32 TileMapCountX;
-    int32 TileMapCountY;
-    
-    tile_map *TileMaps;
-};
-
-struct game_state
-{
-// TODO(casey): Player state should be canonical position now?
-    int32 PlayerTileMapX;
-    int32 PlayerTileMapY;
-    
-    real32 PlayerX;
-    real32 PlayerY;
-};
-=======
 // TODO(casey): In the future, rendering _specifically_ will become a three-tiered abstraction!!!
 typedef struct game_offscreen_buffer
 {
@@ -260,7 +162,6 @@ typedef GAME_GET_SOUND_SAMPLES(game_get_sound_samples);
 #ifdef __cplusplus
 }
 #endif
->>>>>>> Messing with the structure again to try and get a reasonable way to work with debugging and simple updates to the build.bat from Casey.:handmadehero/code/handmade_platform.h
 
 #define HANDMADE_PLATFORM_H
 #endif
