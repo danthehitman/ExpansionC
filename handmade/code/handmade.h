@@ -54,7 +54,7 @@ SafeTruncateUInt64(uint64 Value)
 inline game_controller_input *GetController(game_input *Input, int unsigned ControllerIndex)
 {
     Assert(ControllerIndex < ArrayCount(Input->Controllers));
-
+    
     game_controller_input *Result = &Input->Controllers[ControllerIndex];
     return(Result);
 }
@@ -65,14 +65,29 @@ inline game_controller_input *GetController(game_input *Input, int unsigned Cont
 
 struct canonical_position
 {
+    /* TODO(casey):
+
+       Take the tile map x and y
+       and the tile x and y
+
+       and pack them into single 32-bit values for x and y
+       where there is some low bits for the tile index
+       and the high bits are the tile "page"
+
+       (NOTE we can eliminate the need for floor!)
+    */
     int32 TileMapX;
     int32 TileMapY;
 
     int32 TileX;
     int32 TileY;
 
-    // NOTE(casey): This is tile-relative X and Y
-    // TODO(casey): These are still in pixels... :/
+    /* TODO(casey):
+
+       Convert these to math-friendly, resolution independent representation of
+       world units relative to a tile.
+       
+    */
     real32 TileRelX;
     real32 TileRelY;
 };
@@ -95,13 +110,14 @@ struct tile_map
 
 struct world
 {
+    real32 TileSideInMeters;
+    int32 TileSideInPixels;
+    
     int32 CountX;
     int32 CountY;
     
     real32 UpperLeftX;
     real32 UpperLeftY;
-    real32 TileWidth;
-    real32 TileHeight;
 
     // TODO(casey): Beginner's sparseness
     int32 TileMapCountX;
